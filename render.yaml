@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: zenmade-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  - type: static
+    name: zenmade-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: frontend/build
+    envVars:
+      - key: REACT_APP_API_BASE_URL
+        value: https://zenmade-backend.onrender.com
