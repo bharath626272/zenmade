@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, FileCheck2, Warehouse } from "lucide-react";
 import RevealText from "./RevealText";
 import CountUp from "./CountUp";
 
@@ -9,12 +8,6 @@ const STATS = [
   { value: "500+", label: "Products Handled" },
   { value: "30+", label: "Districts Covered" },
   { value: "99%", label: "On-Time Delivery" },
-];
-
-const CERTS = [
-  { icon: ShieldCheck, label: "WHO-GMP Compliant" },
-  { icon: FileCheck2, label: "Drug License Holder" },
-  { icon: Warehouse, label: "ISO Certified Warehouses" },
 ];
 
 export default function About() {
@@ -55,21 +48,6 @@ export default function About() {
             </motion.p>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3" data-testid="about-certs">
-            {CERTS.map(({ icon: Icon, label }, i) => (
-              <motion.span
-                key={label}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}
-                className="pill-badge"
-              >
-                <Icon size={16} />
-                {label}
-              </motion.span>
-            ))}
-          </div>
         </div>
 
         {/* Stats grid */}
