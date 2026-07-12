@@ -8,11 +8,5 @@
         "distDir": "frontend/build"
       }
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
   ]
 }
