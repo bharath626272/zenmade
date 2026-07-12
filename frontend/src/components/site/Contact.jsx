@@ -284,6 +284,17 @@ export default function Contact() {
                 </a>
               </div>
 
+              <div className="mt-4 overflow-hidden rounded-[1.4rem] border border-slate-200 bg-slate-50/90">
+                <iframe
+                  title="Zenmed location on Google Maps"
+                  src="https://www.google.com/maps?q=NO.%2091,%206th%20Main%20Rd,%20Agrahara%20Dasarahalli,%20Rajajinagar,%20Bengaluru,%20Karnataka%20560079&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                  className="h-56 w-full border-0"
+                />
+              </div>
+
             </motion.form>
           </div>
         </div>

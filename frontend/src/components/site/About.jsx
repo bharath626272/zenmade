@@ -34,8 +34,8 @@ export default function About() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
-              Founded in 2002, Zenmed has grown from a single-district distributor to Karnataka's most trusted pharmaceutical
-              supply chain partner. Our journey is built on one principle: every medicine matters.
+              Established in <strong>2015</strong>, Zenmed is a trusted Pharmaceutical Carrying & Forwarding (CFA) Agent and
+              Super Stockist headquartered in Bengaluru, Karnataka.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -43,8 +43,10 @@ export default function About() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              We work with India's leading pharma manufacturers to ensure their products reach chemists, hospitals, and clinics
-              across every corner of Karnataka — with full traceability, GDP compliance, and cold chain integrity.
+              Built on more than <strong>22 years</strong> of pharmaceutical distribution expertise, Zenmed specializes in
+              warehousing, inventory management, order fulfillment, and supply chain solutions. Our commitment to quality,
+              compliance, transparency, operational excellence, and customer satisfaction has earned the trust of pharmaceutical
+              companies across Karnataka.
             </motion.p>
           </div>
 

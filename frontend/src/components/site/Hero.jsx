@@ -117,17 +117,18 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.05, duration: 0.6 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="mt-10 flex justify-center"
         >
-          <Magnetic>
-            <a href="#services" data-testid="hero-cta-explore" className="btn-primary-pill group">
-              Explore Services{" "}
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-            </a>
-          </Magnetic>
-          <Magnetic strength={0.2}>
-            <a href="#contact" data-testid="hero-cta-contact" className="btn-outline-pill">
-              Contact Us
+          <Magnetic strength={0.18}>
+            <a
+              href="#services"
+              data-testid="hero-scroll-down"
+              className="group flex flex-col items-center gap-2 text-sm font-semibold tracking-[0.2em] uppercase text-slate-600 hover:text-slate-900 transition-colors"
+            >
+              <span>Scroll down</span>
+              <span className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white/80 shadow-sm transition-transform duration-300 group-hover:-translate-y-1">
+                <ArrowRight size={18} className="rotate-90" />
+              </span>
             </a>
           </Magnetic>
         </motion.div>
