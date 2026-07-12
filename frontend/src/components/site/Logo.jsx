@@ -73,11 +73,12 @@ export default function Logo({ className = "" }) {
       data-testid="brand-logo"
       className={`inline-flex items-center justify-center shrink-0 ${className}`.trim()}
       aria-label="Zenmed home"
+      style={{ height: 56, width: 168 }}
     >
       <img
         src="/logo.jpeg"
         alt="Zenmed logo"
-        className="h-9 w-auto max-w-none object-contain block select-none"
+        className="h-14 w-auto max-w-none object-contain block select-none"
         loading="eager"
         draggable="false"
       />
