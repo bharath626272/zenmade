@@ -29,7 +29,7 @@ export default function MissionVision() {
               <h3 className="text-2xl font-extrabold text-slate-900">Mission</h3>
             </div>
             <p className="mt-6 text-base leading-relaxed text-slate-600">
-              To create a seamless, compliant, and dependable pharmaceutical supply network that ensures healthcare access across Karnataka without compromises.
+              To provide efficient, reliable, and compliant pharmaceutical distribution solutions that ensure seamless product availability and support the growth of our principals.
             </p>
           </motion.div>
 
@@ -47,7 +47,7 @@ export default function MissionVision() {
               <h3 className="text-2xl font-extrabold text-slate-900">Vision</h3>
             </div>
             <p className="mt-6 text-base leading-relaxed text-slate-600">
-              To be Karnataka’s most trusted pharmaceutical distribution partner, recognized for excellence, transparency, and service that reaches every corner of the state.
+              To be the preferred Pharma CFA and Super Stockist in South India, recognized for trust, reliability, and service excellence.
             </p>
           </motion.div>
         </div>

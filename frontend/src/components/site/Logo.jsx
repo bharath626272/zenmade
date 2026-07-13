@@ -66,22 +66,81 @@ export function BrandMark({ size = 40, showDots = true, orbit = false, className
   );
 }
 
-export default function Logo({ className = "" }) {
+function ZenmedLogo({ width = 320, showTagline = true, className = "" }) {
+  const blue = "#1F5FD6";
+  const red = "#EE1C25";
+  const dark = "#1A1A1A";
+
+  return (
+    <svg
+      className={className}
+      width={width}
+      height={(width * (showTagline ? 300 : 260)) / 760}
+      viewBox={`0 0 760 ${showTagline ? 300 : 260}`}
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Zenmed - Distributing Trust"
+    >
+      <g>
+        <rect x="10" y="70" width="150" height="60" rx="14" fill={blue} />
+        <rect x="55" y="25" width="60" height="150" rx="14" fill={blue} />
+        <path
+          d="M45 165
+             C55 130, 75 100, 100 80
+             L88 78
+             L125 62
+             L128 100
+             L118 90
+             C98 108, 82 132, 72 165
+             Z"
+          fill="#FFFFFF"
+        />
+      </g>
+
+      <g fill={red}>
+        <path d="M172 40 h8 v14 h14 v8 h-14 v14 h-8 v-14 h-14 v-8 h14 z" />
+        <path d="M200 55 h5 v9 h9 v5 h-9 v9 h-5 v-9 h-9 v-5 h9 z" />
+        <path d="M188 20 h5 v9 h9 v5 h-9 v9 h-5 v-9 h-9 v-5 h9 z" />
+      </g>
+
+      <text
+        x="192"
+        y="168"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontWeight="800"
+        fontSize="110"
+        letterSpacing="-2"
+      >
+        <tspan fill={red}>Zen</tspan>
+        <tspan fill={blue}>med</tspan>
+      </text>
+
+      {showTagline && (
+        <text
+          x="290"
+          y="205"
+          fontFamily="Arial, Helvetica, sans-serif"
+          fontWeight="400"
+          fontSize="30"
+          fill={dark}
+        >
+          Distributing Trust
+        </text>
+      )}
+    </svg>
+  );
+}
+
+export default function Logo({ className = "", showTagline = false, width = 168 }) {
   return (
     <a
       href="#top"
       data-testid="brand-logo"
       className={`inline-flex items-center justify-center shrink-0 ${className}`.trim()}
       aria-label="Zenmed home"
-      style={{ height: 56, width: 168 }}
+      style={{ width, height: "auto" }}
     >
-      <img
-        src="/logo.jpeg"
-        alt="Zenmed logo"
-        className="h-14 w-auto max-w-none object-contain block select-none"
-        loading="eager"
-        draggable="false"
-      />
+      <ZenmedLogo width={width} showTagline={showTagline} className="h-full w-auto" />
     </a>
   );
 }

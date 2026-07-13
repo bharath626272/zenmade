@@ -92,12 +92,12 @@ export default function Contact() {
               <div className="absolute inset-0">
                 <div className="absolute left-[-8%] top-[-10%] h-40 w-40 rounded-full bg-cyan-400/10 blur-3xl" />
                 <div className="absolute bottom-[-10%] right-[-8%] h-44 w-44 rounded-full bg-blue-500/10 blur-3xl" />
-                <div className="absolute left-0 top-0 h-full w-full bg-white/90" />
+                <div className="absolute left-0 top-0 h-full w-full bg-white/90 pointer-events-none" />
               </div>
-              <div className="relative">
+              <div className="relative z-10">
                 <div className="flex items-center gap-3 border-b border-slate-200 pb-5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900/5 text-slate-900 ring-1 ring-slate-200">
-                    <Building2 size={18} />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900/5 text-blue-600 ring-1 ring-slate-200">
+                    <Building2 size={18} className="text-blue-600" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">Zenmed</p>
@@ -108,7 +108,8 @@ export default function Contact() {
                 <div className="mt-8 space-y-5 text-sm leading-7 text-slate-600">
                   <div className="flex gap-3">
                     <MapPin size={18} className="mt-1 shrink-0 text-blue-600" />
-                    <span>NO. 91, 6th Main Rd, Agrahara Dasarahalli, Rajajinagar, Bengaluru, Karnataka 560079</span>
+                    <span>No #91. Ground floor, 4th stage, 4th block, W.O.C road industrial town,
+Bangalore-560079</span>
                   </div>
                   <a href="tel:+919513965599" className="flex gap-3 transition hover:text-slate-900">
                     <Phone size={18} className="mt-1 shrink-0 text-blue-600" />
@@ -143,7 +144,9 @@ export default function Contact() {
                     Looking for a reliable Pharma CFA or Super Stockist partner? Reach out to discuss your distribution, warehousing, and supply chain requirements.
                   </p>
                   <a
-                    href="mailto:zenmedcfa@gmail.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=zenmedcfa@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="mt-5 inline-flex items-center gap-2 rounded-full border border-transparent bg-[oklch(44%_0.19_258)] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
                   >
                     Contact Our Team <ArrowRight size={16} />
@@ -212,7 +215,7 @@ export default function Contact() {
                   <input
                     type="tel"
                     data-testid="contact-input-phone"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 9999999999"
                     className={inputCls(errors.phone)}
                     {...register("phone")}
                   />

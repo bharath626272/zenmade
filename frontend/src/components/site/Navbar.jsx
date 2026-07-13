@@ -50,10 +50,13 @@ export default function Navbar() {
       }`}
       data-testid="site-navbar"
     >
-      <div className="max-w-7xl mx-auto px-5 md:px-8 h-16 md:h-20 flex items-center justify-between">
-        <Logo />
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-8 h-16 md:h-20 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Logo width={160} showTagline={false} className="h-auto w-auto md:hidden" />
+          <Logo width={220} showTagline className="hidden md:inline-flex h-auto w-auto" />
+        </div>
 
-        <nav className="hidden md:flex items-center gap-9">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
@@ -70,7 +73,7 @@ export default function Navbar() {
         <a
           href="#contact"
           data-testid="nav-get-in-touch"
-          className="hidden md:inline-flex btn-primary-pill text-sm px-5 py-2.5"
+          className="hidden md:inline-flex btn-primary-pill text-sm px-4 py-2.5"
         >
           Get In Touch
         </a>
@@ -80,7 +83,7 @@ export default function Navbar() {
           aria-label="Toggle menu"
           data-testid="nav-mobile-toggle"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden p-2 rounded-lg border border-slate-200 text-slate-700"
+          className="md:hidden p-2 rounded-lg border border-slate-200 text-slate-700 shadow-sm bg-white"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>

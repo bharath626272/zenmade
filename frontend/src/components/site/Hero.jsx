@@ -43,13 +43,6 @@ export default function Hero() {
       {/* Ambient animated blobs */}
       <motion.div
         aria-hidden
-        className="absolute -top-24 -left-24 w-[520px] h-[520px] rounded-full blur-3xl opacity-40"
-        style={{ background: "radial-gradient(circle at center, #A7F3D0, transparent 60%)" }}
-        animate={{ x: [0, 30, -20, 0], y: [0, -20, 20, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
         className="absolute top-40 -right-32 w-[560px] h-[560px] rounded-full blur-3xl opacity-30"
         style={{ background: "radial-gradient(circle at center, #BFDBFE, transparent 60%)" }}
         animate={{ x: [0, -25, 20, 0], y: [0, 20, -20, 0] }}
@@ -75,18 +68,6 @@ export default function Hero() {
           <div ref={iconRef} className="relative">
             <BrandMark size={96} orbit />
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.5 }}
-          className="flex justify-center"
-        >
-          <span className="pill-badge" data-testid="hero-badge">
-            <span className="pill-dot" />
-            Karnataka's Premier Pharma Distributor
-          </span>
         </motion.div>
 
         <motion.h1
