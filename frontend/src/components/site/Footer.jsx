@@ -14,11 +14,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
           {/* Brand column */}
-          <div>
-            <div className="flex items-center gap-3">
-              <Logo width={220} showTagline className="h-auto w-auto" />
-            </div>
-            <p className="mt-6 text-slate-900 leading-relaxed text-[0.95rem] max-w-sm">
+          <div className="flex flex-col">
+                   <Logo width={150} className="h-auto w-auto" imgClass="mt-[-4.5rem] ml-[-14rem]" />
+            <p className="-mt-10 text-slate-900 leading-relaxed text-[0.95rem] max-w-sm">
               Trusted Pharmaceutical Carrying & Forwarding Agent and Super Stockist delivering reliable warehousing, inventory management, and pharmaceutical distribution solutions.
             </p>
           </div>
@@ -50,7 +48,7 @@ export default function Footer() {
                 <a href="mailto:zenmedcfa@gmail.com" className="text-slate-900 hover:text-blue-600">zenmedcfa@gmail.com</a>
               </li>
               <li className="flex items-center gap-3">
-                <MapPin size={16} className="text-blue-400" />
+                <MapPin size={25} className="text-blue-400" />
                 <span className="text-slate-900">No #91. Ground floor, 4th stage, 4th block, W.O.C road industrial town,
 Bangalore-560079</span>
               </li>

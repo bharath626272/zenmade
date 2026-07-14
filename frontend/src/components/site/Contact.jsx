@@ -57,6 +57,28 @@ export default function Contact() {
     }
   };
 
+  const handleContactClick = (e) => {
+    const mailto = 'mailto:zenmedcfa@gmail.com?subject=Inquiry%20from%20website';
+    const gmail = 'https://mail.google.com/mail/?view=cm&fs=1&to=zenmedcfa@gmail.com&su=Inquiry%20from%20website';
+    const isMobile = typeof navigator !== 'undefined' && /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      // let the native mail app handle it
+      return;
+    }
+
+    // Desktop: try opening Gmail compose in new tab; fall back to mailto if blocked
+    e.preventDefault();
+    try {
+      const win = window.open(gmail, '_blank', 'noopener,noreferrer');
+      if (!win) {
+        window.location.href = mailto;
+      }
+    } catch (err) {
+      window.location.href = mailto;
+    }
+  };
+
   return (
     <section id="contact" className="relative overflow-hidden bg-[linear-gradient(180deg,#F7FBF9_0%,#F2F8F4_100%)] py-24 md:py-32" data-testid="contact-section">
       <div className="absolute inset-0 opacity-70">
@@ -144,10 +166,10 @@ Bangalore-560079</span>
                     Looking for a reliable Pharma CFA or Super Stockist partner? Reach out to discuss your distribution, warehousing, and supply chain requirements.
                   </p>
                   <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=zenmedcfa@gmail.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-2 rounded-full border border-transparent bg-[oklch(44%_0.19_258)] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                    href="mailto:zenmedcfa@gmail.com?subject=Inquiry%20from%20website"
+                    onClick={handleContactClick}
+                    className="mt-5 inline-flex items-center gap-2 rounded-full border border-transparent bg-[oklch(44%_0.19_258)] px-5 py-3 text-base font-semibold text-white transition hover:opacity-90 md:px-4 md:py-2 md:text-sm"
+                    aria-label="Contact our team via email"
                   >
                     Contact Our Team <ArrowRight size={16} />
                   </a>

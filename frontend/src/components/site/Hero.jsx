@@ -1,13 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { BrandMark } from "./Logo";
 import RevealText from "./RevealText";
 import Magnetic from "./Magnetic";
 
 export default function Hero() {
   const sectionRef = useRef(null);
-  const iconRef = useRef(null);
 
   // Parallax on the hero content driven by scroll position of the section
   const { scrollYProgress } = useScroll({
@@ -15,29 +13,13 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
   const yTitle = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const yIcon = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacityFade = useTransform(scrollYProgress, [0, 0.6, 1], [1, 0.9, 0.4]);
-
-  // Subtle float on the brand mark (independent from scroll)
-  useEffect(() => {
-    let raf;
-    let t = 0;
-    const loop = () => {
-      t += 0.02;
-      if (iconRef.current) {
-        iconRef.current.style.transform = `translateY(${Math.sin(t) * 8}px)`;
-      }
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
-  }, []);
 
   return (
     <section
       id="hero"
       ref={sectionRef}
-      className="hero-bg relative overflow-hidden pt-28 md:pt-36 pb-20 md:pb-28"
+      className="hero-bg relative overflow-hidden pt-40 md:pt-50 ,pb-20 md:pb-28"
       data-testid="hero-section"
     >
       {/* Ambient animated blobs */}
@@ -63,16 +45,9 @@ export default function Hero() {
       />
 
       <motion.div style={{ opacity: opacityFade }} className="relative max-w-6xl mx-auto px-5 md:px-8 text-center">
-        {/* floating orbiting mark */}
-        <motion.div style={{ y: yIcon }} className="flex justify-center mb-8">
-          <div ref={iconRef} className="relative">
-            <BrandMark size={96} orbit />
-          </div>
-        </motion.div>
-
         <motion.h1
-          style={{ y: yTitle }}
-          className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]"
+          style={{ y: yTitle, marginTop: '7rem' }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]"
           data-testid="hero-title"
         >
           <RevealText as="span" text="Trusted Pharma" className="block text-slate-900" />
