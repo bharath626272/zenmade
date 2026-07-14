@@ -51,7 +51,7 @@ export default function Navbar() {
       data-testid="site-navbar"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px- md:px-8 h-16 md:h-20 flex items-center justify-between">
-        <Logo width={130} className="h-auto w-auto md:hidden" imgClass="mt-8 md:mt-6" />
+        <Logo width={160} className="h-auto w-auto md:hidden" imgClass="mt-8 md:mt-6" />
         <Logo width={220} className="hidden md:inline-flex h-auto w-auto" imgClass="mt-8 md:mt-6" />
 
         <nav className="hidden md:flex items-center gap-6 lg:gap-8">
