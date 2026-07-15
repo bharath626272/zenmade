@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Building2, Package, BarChart3, Thermometer, Network, Zap, ArrowRight } from "lucide-react";
+import { Building2, Package, BarChart3, Thermometer, Network, Zap } from "lucide-react";
 import RevealText from "./RevealText";
 import TiltCard from "./TiltCard";
 
@@ -70,7 +70,7 @@ export default function Services() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-6 text-slate-500 text-base md:text-lg leading-relaxed"
           >
-            From cold chain storage to last-mile delivery — we handle every link in the pharmaceutical distribution chain.
+            Delivering end-to-end pharmaceutical distribution solutions—from sourcing and storage to logistics and last-mile delivery.
           </motion.p>
         </div>
 
@@ -94,12 +94,6 @@ export default function Services() {
                   </motion.div>
                   <h3 className="mt-6 text-xl md:text-[1.35rem] font-extrabold text-slate-900">{s.title}</h3>
                   <p className="mt-3 text-slate-500 leading-relaxed">{s.desc}</p>
-                  <a
-                    href="#contact"
-                    className={`mt-6 inline-flex items-center gap-1.5 font-bold ${s.color}`}
-                  >
-                    Learn more <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                  </a>
                 </article>
               </TiltCard>
             </motion.div>
