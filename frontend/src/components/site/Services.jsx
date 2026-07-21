@@ -55,14 +55,13 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <div className="flex justify-center">
-            <span className="section-tag" data-testid="services-tag">What We Do</span>
+            <span className="section-tag brand-gradient-text" data-testid="services-tag">What We Do</span>
           </div>
+          {/*
           <h2 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]" data-testid="services-title">
-            <span className="block">
-              <RevealText as="span" text="Comprehensive Pharma" className="text-slate-900" />{" "}
-              <RevealText as="span" text="Services" className="brand-gradient-text" delay={0.2} />
-            </span>
+            Services
           </h2>
+          */}
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}

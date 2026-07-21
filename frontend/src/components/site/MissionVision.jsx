@@ -7,12 +7,9 @@ export default function MissionVision() {
     <section id="mission-vision" className="relative py-24 md:py-32 bg-[#F7FBF9]" data-testid="mission-vision-section">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <span className="section-tag" data-testid="mission-vision-tag">
+          <span className="section-tag brand-gradient-text" data-testid="mission-vision-tag">
             Mission & Vision
           </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-slate-900" data-testid="mission-vision-title">
-            Building a <span className="brand-gradient-text">stronger</span> healthcare <span className="brand-gradient-text">future</span>
-          </h2>
         </div>
         <div className="mt-14 grid gap-6 lg:grid-cols-2" data-testid="mission-vision-grid">
           <motion.div

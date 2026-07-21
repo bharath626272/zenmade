@@ -15,17 +15,15 @@ export default function About() {
     <section id="about" className="relative py-24 md:py-32 bg-[#F7FBF9]" data-testid="about-section">
       <div className="max-w-7xl mx-auto px-5 md:px-8 grid gap-14 lg:grid-cols-[minmax(0,0.65fr)_minmax(0,0.35fr)] items-start">
         <div className="lg:pr-10">
-          <span className="section-tag" data-testid="about-tag">About us</span>
+          <span className="section-tag brand-gradient-text" data-testid="about-tag">About us</span>
+          {/*
           <h2
-            className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]"
+            className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-slate-900"
             data-testid="about-title"
           >
-            <RevealText as="span" text="A trusted partner in" className="block text-slate-900" />
-            <span className="block">
-              <RevealText as="span" text="Pharmaceutical" className="brand-gradient-text" delay={0.1} />{" "}
-              <RevealText as="span" text="distribution" className="text-slate-900" delay={0.25} />
-            </span>
+            About <span className="text-blue-600">Zenmed</span>
           </h2>
+          */}
 
           <div className="mt-8 space-y-6 text-slate-500 leading-relaxed max-w-2xl">
             <motion.p

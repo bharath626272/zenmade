@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { Mail, Phone, MapPin, Clock, Loader2, ArrowRight, Building2, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Loader2, ArrowRight, Send } from "lucide-react";
 import RevealText from "./RevealText";
 import Magnetic from "./Magnetic";
+import Logo, { LOGO_WIDTH } from "./Logo";
 import { getApiUrl } from "../../lib/api";
 
 export default function Contact() {
@@ -89,27 +90,18 @@ export default function Contact() {
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <div className="flex justify-center">
-            <span className="section-tag" data-testid="contact-tag">Contact Us</span>
+            <span className="section-tag brand-gradient-text" data-testid="contact-tag">Contact Us</span>
           </div>
-          <h2 className="mt-5 text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl" data-testid="contact-title">
-            <span className="block">
-              <RevealText as="span" text="Let’s" className="text-slate-900" />{" "}
-              <RevealText as="span" text="Talk" className="brand-gradient-text" delay={0.12} />
-            </span>
-          </h2>
-          <p className="mt-6 text-base leading-relaxed text-slate-500 md:text-lg">
-            Share your requirements and our team will get back with the right distribution support.
-          </p>
         </div>
 
         <div className="mt-14 rounded-[2.2rem] border border-slate-200/80 bg-white/95 p-4 shadow-[0_40px_100px_-35px_rgba(15,23,42,0.28)] backdrop-blur sm:p-6 md:p-8 lg:p-10">
-          <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr]">
+          <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
             <motion.div
               initial={{ opacity: 0, x: -16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
-              className="relative overflow-hidden rounded-[1.8rem] border border-slate-200 bg-[linear-gradient(135deg,#ffffff_0%,#f8fbff_100%)] p-7 text-slate-900 shadow-[0_20px_50px_-24px_rgba(2,6,23,0.2)] md:p-8"
+              className="relative overflow-hidden rounded-[1.8rem] border border-slate-200 bg-[linear-gradient(135deg,#ffffff_0%,#f8fbff_100%)] p-5 text-slate-900 shadow-[0_20px_50px_-24px_rgba(2,6,23,0.2)] md:p-6"
             >
               <div className="absolute inset-0">
                 <div className="absolute left-[-8%] top-[-10%] h-40 w-40 rounded-full bg-cyan-400/10 blur-3xl" />
@@ -117,14 +109,11 @@ export default function Contact() {
                 <div className="absolute left-0 top-0 h-full w-full bg-white/90 pointer-events-none" />
               </div>
               <div className="relative z-10">
-                <div className="flex items-center gap-3 border-b border-slate-200 pb-5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900/5 text-blue-600 ring-1 ring-slate-200">
-                    <Building2 size={18} className="text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">Zenmed</p>
-                    <p className="text-sm text-slate-600">Pharma CFA & Super Stockist Partner</p>
-                  </div>
+                <div className="pb-4">
+                  <Logo width={LOGO_WIDTH.CONTACT} className="h-auto w-auto" imgClass="" />
+                </div>
+                <div className="border-b border-slate-200 pb-3 text-left">
+                  <p className="text-sm text-slate-600">Pharma CFA & Super Stockist Partner</p>
                 </div>
 
                 <div className="mt-8 space-y-5 text-sm leading-7 text-slate-600">
@@ -165,14 +154,6 @@ Bangalore-560079</span>
                   <p className="mt-3 text-sm leading-7 text-slate-600">
                     Looking for a reliable Pharma CFA or Super Stockist partner? Reach out to discuss your distribution, warehousing, and supply chain requirements.
                   </p>
-                  <a
-                    href="mailto:zenmedcfa@gmail.com?subject=Inquiry%20from%20website"
-                    onClick={handleContactClick}
-                    className="mt-5 inline-flex items-center gap-2 rounded-full border border-transparent bg-[oklch(44%_0.19_258)] px-5 py-3 text-base font-semibold text-white transition hover:opacity-90 md:px-4 md:py-2 md:text-sm"
-                    aria-label="Contact our team via email"
-                  >
-                    Contact Our Team <ArrowRight size={16} />
-                  </a>
                 </div>
               </div>
             </motion.div>
@@ -259,10 +240,10 @@ Bangalore-560079</span>
               <div className="mt-5">
                 <Field label="Message" error={errors.message?.message}>
                   <textarea
-                    rows={6}
+                    rows={4}
                     data-testid="contact-input-message"
                     placeholder="Tell us about your distribution requirements..."
-                    className={`${inputCls(errors.message)} min-h-[150px] resize-none`}
+                    className={`${inputCls(errors.message)} min-h-[120px] resize-none`}
                     aria-invalid={!!errors.message}
                     {...register("message", { required: "Message is required", minLength: { value: 5, message: "Please add more details" } })}
                   />
@@ -309,20 +290,24 @@ Bangalore-560079</span>
                 </a>
               </div>
 
-              <div className="mt-4 overflow-hidden rounded-[1.4rem] border border-slate-200 bg-slate-50/90">
-                <iframe
-                  title="Zenmed location on Google Maps"
-                  src="https://www.google.com/maps?q=NO.%2091,%206th%20Main%20Rd,%20Agrahara%20Dasarahalli,%20Rajajinagar,%20Bengaluru,%20Karnataka%20560079&output=embed"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                  className="h-56 w-full border-0"
-                />
-              </div>
-
             </motion.form>
           </div>
         </div>
+
+        <div className="mt-10 overflow-hidden rounded-[1.8rem] border border-slate-200 bg-slate-50/90">
+          <div className="border-b border-slate-200 bg-slate-100 px-6 py-4 text-sm text-slate-700">
+            No #91. Ground floor, 4th stage, 4th block, W.O.C road industrial town, Bangalore-560079
+          </div>
+          <iframe
+            title="Zenmed location on Google Maps"
+            src="https://maps.google.com/maps?q=No+91,+Ground+Floor,+4th+Stage,+4th+Block,+W.O.C+Road,+Industrial+Town,+Bangalore+560079&output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+            className="h-[28rem] w-full border-0"
+          />
+        </div>
+
       </div>
     </section>
   );

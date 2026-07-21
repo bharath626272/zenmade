@@ -1,6 +1,6 @@
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
-import Logo from "./Logo";
+import Logo, { LOGO_WIDTH } from "./Logo";
 
 const QUICK_LINKS = [
   { label: "About Us", href: "#about" },
@@ -15,8 +15,8 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
           {/* Brand column */}
           <div className="flex flex-col">
-                   <Logo width={150} className="h-auto w-auto" imgClass="mt-[-4.5rem] ml-[-14rem]" />
-            <p className="-mt-10 text-slate-900 leading-relaxed text-[0.95rem] max-w-sm">
+                   <Logo width={LOGO_WIDTH.CONTACT} className="h-auto w-auto -ml-2 self-start" imgClass="" />
+            <p className="mt-4 text-slate-900 leading-relaxed text-[0.95rem] max-w-sm">
               Trusted Pharmaceutical Carrying & Forwarding Agent and Super Stockist delivering reliable warehousing, inventory management, and pharmaceutical distribution solutions.
             </p>
           </div>
@@ -57,7 +57,7 @@ Bangalore-560079</span>
         </div>
 
         <div className="mt-14 pt-6 border-t border-slate-200 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-slate-700">
-          <div>© 2024 Zenmed Distribution Pvt. Ltd. All rights reserved.</div>
+          <div>© 2026 Zenmed Distribution Pvt. Ltd. All rights reserved.</div>
         </div>
       </div>
     </footer>

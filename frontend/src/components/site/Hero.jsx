@@ -19,7 +19,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={sectionRef}
-      className="hero-bg relative overflow-hidden pt-40 md:pt-50 ,pb-20 md:pb-28"
+      className="relative overflow-hidden pt-40 md:pt-50 pb-20 md:pb-28 bg-white"
       data-testid="hero-section"
     >
       {/* Ambient animated blobs */}
@@ -46,11 +46,11 @@ export default function Hero() {
 
       <motion.div style={{ opacity: opacityFade }} className="relative max-w-6xl mx-auto px-5 md:px-8 text-center">
         <motion.h1
-          style={{ y: yTitle, marginTop: '7rem' }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]"
+          style={{ y: yTitle, marginTop: '5rem', fontSize: 'clamp(2.2rem, 6vw, 3.5rem)' }}
+          className="font-black tracking-tight leading-[1.05]"
           data-testid="hero-title"
         >
-          <RevealText as="span" text="Trusted Pharma" className="block text-slate-900" />
+          <RevealText as="span" text="Trusted Zenmed-Pharma" className="block text-slate-900" />
           <RevealText
             as="span"
             text="Distribution Partner"

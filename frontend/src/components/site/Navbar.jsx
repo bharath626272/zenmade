@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import Logo from "./Logo";
+import Logo, { LOGO_WIDTH } from "./Logo";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#top" },
@@ -45,14 +45,12 @@ export default function Navbar() {
       initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/85 backdrop-blur-md border-b border-slate-100 shadow-[0_6px_20px_-18px_rgba(15,23,42,0.4)]" : "bg-transparent"
-      }`}
+      className="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white border-b border-slate-100 shadow-[0_6px_20px_-18px_rgba(15,23,42,0.4)]"
       data-testid="site-navbar"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px- md:px-8 h-16 md:h-20 flex items-center justify-between">
-        <Logo width={160} className="h-auto w-auto md:hidden" imgClass="mt-8 md:mt-6" />
-        <Logo width={220} className="hidden md:inline-flex h-auto w-auto" imgClass="mt-8 md:mt-6" />
+        <Logo width={LOGO_WIDTH.NAV_MOBILE} className="h-auto w-auto md:hidden" imgClass="" />
+        <Logo width={LOGO_WIDTH.NAV_DESKTOP} className="hidden md:inline-flex h-auto w-auto" imgClass="" />
 
         <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {NAV_ITEMS.map((item) => (

@@ -1,6 +1,13 @@
 import React from "react";
 
-export default function Logo({ className = "", width = 160, imgClass = "" }) {
+export const LOGO_WIDTH = {
+  NAV_MOBILE: 160,
+  NAV_DESKTOP: 220,
+  CONTACT: 200,
+  FOOTER: 140,
+};
+
+export default function Logo({ className = "", width = LOGO_WIDTH.NAV_MOBILE, imgClass = "" }) {
   return (
     <a
       href="#top"
