@@ -13,6 +13,24 @@ const queryClient = new QueryClient({
   },
 });
 
+function ensureFavicon() {
+  const href = "/fav.png";
+  const existing = document.querySelector('link[rel~="icon"]');
+  if (existing) {
+    existing.href = href;
+    existing.type = "image/png";
+    return;
+  }
+
+  const link = document.createElement("link");
+  link.rel = "icon";
+  link.type = "image/png";
+  link.href = href;
+  document.head.appendChild(link);
+}
+
+ensureFavicon();
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
