@@ -41,7 +41,7 @@ export default function Footer() {
             <ul className="mt-6 space-y-4" data-testid="footer-contact">
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-blue-400" />
-                <a href="tel:+918045678901" className="text-slate-900 hover:text-blue-600">+91 9513965599</a>
+                <a href="tel:+919513965599" className="text-slate-900 hover:text-blue-600">+91 9513965599</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-blue-400" />

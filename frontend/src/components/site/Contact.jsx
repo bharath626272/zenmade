@@ -144,7 +144,7 @@ Bangalore-560079</span>
                     </div>
                     <div className="flex items-center justify-between gap-4">
                       <span>Sunday</span>
-                      <span className="font-semibold text-slate-900">Closed</span>
+                      <span className="font-semibold text-slate-900">Holiday</span>
                     </div>
                   </div>
                 </div>

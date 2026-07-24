@@ -50,13 +50,15 @@ export default function Hero() {
           className="font-black tracking-tight leading-[1.05]"
           data-testid="hero-title"
         >
-          <RevealText as="span" text="Trusted Zenmed-Pharma" className="block text-slate-900" />
-          <RevealText
-            as="span"
-            text="Distribution Partner"
-            className="block brand-gradient-text"
-            delay={0.15}
-          />
+          <RevealText as="span" text="Trusted-Pharma" className="block text-slate-900" />
+          <span className="inline md:block md:mt-2">
+            <RevealText
+              as="span"
+              text=" distribution Partner"
+              className="block brand-gradient-text"
+              delay={0.15}
+            />
+          </span>
         </motion.h1>
 
         <motion.p
