@@ -80,9 +80,19 @@ export default function Contact() {
     }
   };
 
+  const handleCopyEmail = async (e) => {
+    e.preventDefault();
+    try {
+      await navigator.clipboard.writeText('zenmedcfa@gmail.com');
+      toast.success('Email copied to clipboard');
+    } catch (err) {
+      toast.error('Could not copy email');
+    }
+  };
+
   return (
     <section id="contact" className="relative overflow-hidden bg-[linear-gradient(180deg,#F7FBF9_0%,#F2F8F4_100%)] py-24 md:py-32" data-testid="contact-section">
-      <div className="absolute inset-0 opacity-70">
+      <div className="absolute inset-0 opacity-70 pointer-events-none">
         <div className="absolute left-[-6%] top-0 h-56 w-56 rounded-full bg-blue-500/10 blur-3xl" />
         <div className="absolute bottom-[-8%] right-[-4%] h-72 w-72 rounded-full bg-emerald-400/10 blur-3xl" />
       </div>
@@ -126,10 +136,19 @@ Bangalore-560079</span>
                     <Phone size={18} className="mt-1 shrink-0 text-blue-600" />
                     <span>+91 9513965599</span>
                   </a>
-                  <a href="mailto:zenmedcfa@gmail.com" className="flex gap-3 transition hover:text-slate-900">
-                    <Mail size={18} className="mt-1 shrink-0 text-blue-600" />
-                    <span>zenmedcfa@gmail.com</span>
-                  </a>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href="mailto:zenmedcfa@gmail.com"
+                      onClick={handleContactClick}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex gap-3 transition hover:text-slate-900"
+                    >
+                      <Mail size={18} className="mt-1 shrink-0 text-blue-600" />
+                      <span>zenmedcfa@gmail.com</span>
+                    </a>
+                    {/* copy button removed per request */}
+                  </div>
                 </div>
 
                 <div className="mt-8 rounded-[1.4rem] border border-slate-200 bg-slate-50/90 p-6 backdrop-blur-sm">

@@ -45,7 +45,28 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-blue-400" />
-                <a href="mailto:zenmedcfa@gmail.com" className="text-slate-900 hover:text-blue-600">zenmedcfa@gmail.com</a>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="mailto:zenmedcfa@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      const gmail = 'https://mail.google.com/mail/?view=cm&fs=1&to=zenmedcfa@gmail.com';
+                      const isMobile = typeof navigator !== 'undefined' && /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+                      if (isMobile) return;
+                      e.preventDefault();
+                      try {
+                        const win = window.open(gmail, '_blank', 'noopener,noreferrer');
+                        if (!win) window.location.href = 'mailto:zenmedcfa@gmail.com';
+                      } catch (err) {
+                        window.location.href = 'mailto:zenmedcfa@gmail.com';
+                      }
+                    }}
+                    className="text-slate-900 hover:text-blue-600"
+                  >
+                    zenmedcfa@gmail.com
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <MapPin size={25} className="text-blue-400" />
