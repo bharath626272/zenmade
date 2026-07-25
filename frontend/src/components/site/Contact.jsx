@@ -319,7 +319,7 @@ Bangalore-560079</span>
           </div>
           <iframe
             title="Zenmed location on Google Maps"
-            src="https://maps.google.com/maps?q=No+91,+Ground+Floor,+4th+Stage,+4th+Block,+W.O.C+Road,+Industrial+Town,+Bangalore+560079&output=embed"
+            src="https://www.google.com/maps?q=12.9817778,77.5394167&output=embed"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
