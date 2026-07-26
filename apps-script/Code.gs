@@ -1,4 +1,4 @@
-const SPREADSHEET_ID = "1HxwRkOqc2irMIKXzmX4w6AtGYlrL44iG3abwQE4pKz8";
+const SPREADSHEET_ID = "1VJt5R_NdgOyh5oZpORkrP6hxaTimzXyiTsXadkx3MVQ";
 
 function doGet(e) {
   return createJsonResponse({
@@ -120,6 +120,9 @@ function parsePayload(e) {
 function createJsonResponse(payload) {
   const output = ContentService.createTextOutput(JSON.stringify(payload));
   output.setMimeType(ContentService.MimeType.JSON);
+  output.setHeader("Access-Control-Allow-Origin", "*");
+  output.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  output.setHeader("Access-Control-Allow-Headers", "Content-Type");
   return output;
 }
 
