@@ -265,7 +265,7 @@ Bangalore-560079</span>
                     placeholder="Tell us about your distribution requirements..."
                     className={`${inputCls(errors.message)} min-h-[120px] resize-none`}
                     aria-invalid={!!errors.message}
-                    {...register("message", { required: "Message is required", minLength: { value: 5, message: "Please add more details" } })}
+                    {...register("message", { required: "Message is required", minLength: { value: 10, message: "Message must be at least 10 characters long" } })}
                   />
                 </Field>
               </div>
