@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin, Clock, Loader2, ArrowRight, Send } from "lucide-re
 import RevealText from "./RevealText";
 import Magnetic from "./Magnetic";
 import Logo, { LOGO_WIDTH } from "./Logo";
-import { getApiUrl } from "../../lib/api";
+import { submitContactForm } from "../../lib/contact";
 
 export default function Contact() {
   const {
@@ -33,22 +33,19 @@ export default function Contact() {
     try {
       setSubmitting(true);
 
-      const response = await fetch(getApiUrl("/api/contact"), {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-        keepalive: true,
-      });
+      const payload = {
+        name: values.name,
+        company: values.company || "",
+        email: values.email,
+        phone: values.phone || "",
+        subject: values.subject || "",
+        message: values.message,
+        honeypot: values.honeypot || "",
+      };
 
-      const data = await response.json().catch(() => ({}));
+      const data = await submitContactForm(payload);
 
-      if (!response.ok) {
-        throw new Error(data.message || "Something went wrong. Please try again.");
-      }
-
-      console.info("Contact form submitted", values);
+      console.info("Contact form submitted", payload);
       toast.success(data.message || "Message received. We will reach out shortly.");
       reset();
     } catch (err) {
@@ -195,6 +192,10 @@ Bangalore-560079</span>
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-700">Send us an inquiry</p>
                   <p className="text-sm text-slate-500">Share a few details and our team will get back to you shortly.</p>
                 </div>
+              </div>
+
+              <div className="hidden" aria-hidden="true">
+                <input tabIndex={-1} autoComplete="off" {...register("honeypot")} />
               </div>
 
               <div className="mt-7 grid gap-5 md:grid-cols-2">
