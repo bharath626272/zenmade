@@ -1,4 +1,5 @@
-const SPREADSHEET_ID = "1VJt5R_NdgOyh5oZpORkrP6hxaTimzXyiTsXadkx3MVQ";
+const SPREADSHEET_ID = "1ehwibYJeRhUo4x19TQUGhrwPFf6WCrNECpgq7eV9Gw8";
+const TIMEZONE = "Asia/Kolkata";
 
 function doGet(e) {
   return createJsonResponse({
@@ -30,7 +31,7 @@ function doPost(e) {
       });
     }
 
-    if (payload.message.trim().length < 10) {
+    if (payload.message.length < 10) {
       return createJsonResponse({
         ok: false,
         message: "Message must be at least 10 characters long.",
@@ -47,9 +48,10 @@ function doPost(e) {
     const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
     const sheet = spreadsheet.getActiveSheet();
 
+    // Add headers if sheet is empty
     if (sheet.getLastRow() === 0) {
       sheet.appendRow([
-        "Timestamp",
+        "Timestamp (IST)",
         "Name",
         "Email",
         "Phone",
@@ -59,8 +61,15 @@ function doPost(e) {
       ]);
     }
 
+    // Indian Standard Time
+    const timestamp = Utilities.formatDate(
+      new Date(),
+      TIMEZONE,
+      "dd-MM-yyyy HH:mm:ss",
+    );
+
     const row = [
-      new Date().toISOString(),
+      timestamp,
       payload.name,
       payload.email,
       payload.phone,
@@ -70,6 +79,7 @@ function doPost(e) {
     ];
 
     Logger.log("Appending row to sheet: " + sheet.getName());
+
     sheet.appendRow(row);
     SpreadsheetApp.flush();
 
@@ -80,9 +90,10 @@ function doPost(e) {
     });
   } catch (error) {
     Logger.log("Error: " + error.toString());
+
     return createJsonResponse({
       ok: false,
-      message: "Error: " + (error.message || "Unable to submit your message."),
+      message: error.message || "Unable to submit your message.",
     });
   }
 }
@@ -93,11 +104,9 @@ function parsePayload(e) {
   if (e && e.postData && e.postData.contents) {
     const contentType = e.postData.type || "";
 
-    if (contentType.indexOf("application/json") !== -1) {
+    if (contentType.includes("application/json")) {
       data = JSON.parse(e.postData.contents);
-    } else if (
-      contentType.indexOf("application/x-www-form-urlencoded") !== -1
-    ) {
+    } else if (contentType.includes("application/x-www-form-urlencoded")) {
       data = e.parameter || {};
     }
   }
@@ -120,9 +129,6 @@ function parsePayload(e) {
 function createJsonResponse(payload) {
   const output = ContentService.createTextOutput(JSON.stringify(payload));
   output.setMimeType(ContentService.MimeType.JSON);
-  output.setHeader("Access-Control-Allow-Origin", "*");
-  output.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  output.setHeader("Access-Control-Allow-Headers", "Content-Type");
   return output;
 }
 
