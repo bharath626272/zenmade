@@ -11,8 +11,8 @@ import banner3 from "@/assets/images/hero-banner-3.png";
 export const HERO_SLIDES = [
   {
     id: 1,
-    image: banner1,
-    alt: "Zenmed - Right Medicine. Right Place. Right Time.",
+    image: banner3,
+    alt: "Zenmed - Trusted Pharma Distribution Partner",
   },
   {
     id: 2,
@@ -21,8 +21,8 @@ export const HERO_SLIDES = [
   },
   {
     id: 3,
-    image: banner3,
-    alt: "Zenmed - Trusted Pharma Distribution Partner",
+    image: banner1,
+    alt: "Zenmed - Right Medicine. Right Place. Right Time.",
   },
 ];
 
