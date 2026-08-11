@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn } from "lucide-react";
 import Logo, { LOGO_WIDTH } from "./Logo";
 
 const NAV_ITEMS = [
@@ -48,7 +48,7 @@ export default function Navbar() {
       className="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-white border-b border-slate-100 shadow-[0_6px_20px_-18px_rgba(15,23,42,0.4)]"
       data-testid="site-navbar"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px- md:px-8 h-16 md:h-20 flex items-center justify-between">
+      <div className="max-w-[1800px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 h-16 md:h-20 flex items-center justify-between">
         <Logo width={LOGO_WIDTH.NAV_MOBILE} className="h-auto w-auto md:hidden" imgClass="" />
         <Logo width={LOGO_WIDTH.NAV_DESKTOP} className="hidden md:inline-flex h-auto w-auto" imgClass="" />
 
@@ -66,13 +66,23 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <a
-          href="#contact"
-          data-testid="nav-get-in-touch"
-          className="hidden md:inline-flex btn-primary-pill text-sm px-4 py-2.5"
-        >
-          Get In Touch
-        </a>
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="#login"
+            data-testid="nav-login"
+            className="btn-outline-pill text-sm px-4 py-2 flex items-center gap-2"
+          >
+            <LogIn size={16} />
+            Login
+          </a>
+          <a
+            href="#contact"
+            data-testid="nav-get-in-touch"
+            className="btn-primary-pill text-sm px-4 py-2.5"
+          >
+            Get In Touch
+          </a>
+        </div>
 
         <button
           type="button"
@@ -99,14 +109,25 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 btn-primary-pill text-sm justify-center"
-              data-testid="nav-mobile-get-in-touch"
-            >
-              Get In Touch
-            </a>
+            <div className="mt-3 flex flex-col gap-2">
+              <a
+                href="#login"
+                onClick={() => setOpen(false)}
+                className="btn-outline-pill text-sm justify-center py-2 flex items-center gap-2"
+                data-testid="nav-mobile-login"
+              >
+                <LogIn size={16} />
+                Login
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="btn-primary-pill text-sm justify-center py-2.5"
+                data-testid="nav-mobile-get-in-touch"
+              >
+                Get In Touch
+              </a>
+            </div>
           </div>
         </div>
       )}

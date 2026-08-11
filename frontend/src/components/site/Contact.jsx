@@ -94,7 +94,7 @@ export default function Contact() {
         <div className="absolute bottom-[-8%] right-[-4%] h-72 w-72 rounded-full bg-emerald-400/10 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 md:px-8">
+      <div className="relative mx-auto max-w-[1800px] px-5 md:px-10 lg:px-14">
         <div className="mx-auto max-w-3xl text-center">
           <div className="flex justify-center">
             <span className="section-tag brand-gradient-text" data-testid="contact-tag">Contact Us</span>

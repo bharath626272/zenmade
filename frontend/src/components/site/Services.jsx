@@ -52,7 +52,7 @@ const SERVICES = [
 export default function Services() {
   return (
     <section id="services" className="relative py-24 md:py-32 bg-white" data-testid="services-section">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
+      <div className="max-w-[1800px] mx-auto px-5 md:px-10 lg:px-14">
         <div className="text-center max-w-3xl mx-auto">
           <div className="flex justify-center">
             <span className="section-tag brand-gradient-text" data-testid="services-tag">What We Do</span>

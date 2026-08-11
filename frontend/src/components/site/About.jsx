@@ -13,7 +13,7 @@ const STATS = [
 export default function About() {
   return (
     <section id="about" className="relative py-24 md:py-32 bg-[#F7FBF9]" data-testid="about-section">
-      <div className="max-w-7xl mx-auto px-5 md:px-8 grid gap-14 lg:grid-cols-[minmax(0,0.65fr)_minmax(0,0.35fr)] items-start">
+      <div className="max-w-[1800px] mx-auto px-5 md:px-10 lg:px-14 grid gap-14 lg:grid-cols-[minmax(0,0.65fr)_minmax(0,0.35fr)] items-start">
         <div className="lg:pr-10">
           <span className="section-tag brand-gradient-text" data-testid="about-tag">About us</span>
           {/*
@@ -81,7 +81,7 @@ export default function About() {
       </div>
 
       {/*
-      <div className="max-w-7xl mx-auto px-5 md:px-8 mt-16 lg:mt-20">
+      <div className="max-w-[1800px] mx-auto px-5 md:px-10 lg:px-14 mt-16 lg:mt-20">
         <div className="text-center max-w-3xl mx-auto">
            <span className="section-tag" data-testid="about-tag">Core Values</span>
           <h2

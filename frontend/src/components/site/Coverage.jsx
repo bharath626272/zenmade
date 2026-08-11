@@ -15,7 +15,7 @@ const HUBS = [
 export default function Coverage() {
   return (
     <section id="coverage" className="relative py-24 md:py-32 bg-white" data-testid="coverage-section">
-      <div className="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-14 items-center">
+      <div className="max-w-[1800px] mx-auto px-5 md:px-10 lg:px-14 grid lg:grid-cols-2 gap-14 items-center">
         {/* Map */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}

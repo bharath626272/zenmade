@@ -11,7 +11,7 @@ const QUICK_LINKS = [
 export default function Footer() {
   return (
     <footer className="relative bg-white text-slate-900 pt-20 pb-8" data-testid="site-footer">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
+      <div className="max-w-[1800px] mx-auto px-5 md:px-10 lg:px-14">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
           {/* Brand column */}
           <div className="flex flex-col">

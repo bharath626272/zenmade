@@ -5,7 +5,7 @@ import { Target, Eye } from "lucide-react";
 export default function MissionVision() {
   return (
     <section id="mission-vision" className="relative py-24 md:py-32 bg-[#F7FBF9]" data-testid="mission-vision-section">
-      <div className="max-w-7xl mx-auto px-5 md:px-8">
+      <div className="max-w-[1800px] mx-auto px-5 md:px-10 lg:px-14">
         <div className="text-center max-w-3xl mx-auto">
           <span className="section-tag brand-gradient-text" data-testid="mission-vision-tag">
             Mission & Vision
