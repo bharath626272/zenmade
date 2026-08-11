@@ -111,17 +111,16 @@ export default function Hero({ slides = HERO_SLIDES }) {
               animate="center"
               exit="exit"
               transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
+                x: { type: "tween", ease: [0.22, 1, 0.36, 1], duration: 0.8 },
               }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.2}
+              dragElastic={0.15}
               onDragEnd={(e, { offset, velocity }) => {
                 const swipe = Math.abs(offset.x) * velocity.x;
-                if (offset.x < -40 || swipe < -500) {
+                if (offset.x < -30 || swipe < -300) {
                   paginate(1);
-                } else if (offset.x > 40 || swipe > 500) {
+                } else if (offset.x > 30 || swipe > 300) {
                   paginate(-1);
                 }
               }}
