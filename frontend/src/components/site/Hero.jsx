@@ -89,7 +89,7 @@ export default function Hero({ slides = HERO_SLIDES }) {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative pt-20 sm:pt-24 md:pt-28 pb-4 sm:pb-6 px-4 sm:px-6 md:px-8 max-w-[1360px] mx-auto bg-white overflow-hidden"
+      className="relative pt-20 sm:pt-24 md:pt-28 pb-4 sm:pb-6 px-4 sm:px-6 md:px-8 max-w-[1500px] mx-auto bg-white overflow-hidden"
       data-testid="hero-section"
     >
       {/* Screen reader heading for accessibility & SEO */}
@@ -97,7 +97,7 @@ export default function Hero({ slides = HERO_SLIDES }) {
         Zenmed Distributing Trust - Right Medicine. Right Place. Right Time.
       </h1>
 
-      {/* Hero Container - Exact 16:9 aspect ratio matching 3840x2160 banner images for 100% edge-to-edge fit with zero pillarboxing */}
+      {/* Hero Container - 16:9 aspect ratio matching 3840x2160 banner files to ensure zero top/bottom cropping */}
       <div className="relative overflow-hidden rounded-[16px] sm:rounded-[24px] md:rounded-[32px] border border-slate-200/90 shadow-[0_12px_36px_-12px_rgba(15,23,42,0.15)] bg-slate-50 aspect-[16/9] w-full flex items-center justify-center touch-pan-y mx-auto">
         
         {/* Horizontal Banner Image Track with Mobile Touch Drag/Swipe */}
@@ -126,7 +126,7 @@ export default function Hero({ slides = HERO_SLIDES }) {
               }}
               className="absolute inset-0 w-full h-full transform-gpu cursor-grab active:cursor-grabbing"
             >
-              {/* Ultra-HD Banner Image - w-full h-full object-cover fills 16:9 container perfectly without pillarboxing */}
+              {/* Ultra-HD Banner Image - object-cover inside 16:9 container renders 100% full logo and text */}
               <img
                 src={activeSlide.image}
                 alt={activeSlide.alt}
