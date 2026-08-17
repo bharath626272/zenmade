@@ -1,27 +1,32 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ChevronLeft, ChevronRight } from "lucide-react";
-import Magnetic from "./Magnetic";
+import React, { useEffect, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Direct ES Imports for 100% reliable Webpack / React image bundling
-import banner1 from "@/assets/images/hero-banner-1.png";
-import banner2 from "@/assets/images/hero-banner-2.png";
-import banner3 from "@/assets/images/hero-banner-3.png";
+import banner1Mobile from "@/assets/images/hero-banner-1.png";
+import banner2Mobile from "@/assets/images/hero-banner-2.png";
+import banner3Mobile from "@/assets/images/hero-banner-3.png";
+
+import banner1Desktop from "@/assets/images/hero-banner-desktop-1.png";
+import banner2Desktop from "@/assets/images/hero-banner-desktop-2.png";
+import banner3Desktop from "@/assets/images/hero-banner-desktop-3.png";
 
 export const HERO_SLIDES = [
   {
     id: 1,
-    image: banner3,
+    imageMobile: banner1Mobile,
+    imageDesktop: banner1Desktop,
     alt: "Zenmed - Trusted Pharma Distribution Partner",
   },
   {
     id: 2,
-    image: banner2,
+    imageMobile: banner2Mobile,
+    imageDesktop: banner2Desktop,
     alt: "Zenmed - Your Growth is Our Priority",
   },
   {
     id: 3,
-    image: banner1,
+    imageMobile: banner3Mobile,
+    imageDesktop: banner3Desktop,
     alt: "Zenmed - Right Medicine. Right Place. Right Time.",
   },
 ];
@@ -29,174 +34,242 @@ export const HERO_SLIDES = [
 const slideVariants = {
   enter: (direction) => ({
     x: direction > 0 ? "100%" : "-100%",
-    opacity: 1,
+    opacity: 0.9,
   }),
   center: {
     x: 0,
     opacity: 1,
   },
   exit: (direction) => ({
-    x: direction < 0 ? "100%" : "-100%",
-    opacity: 1,
+    x: direction > 0 ? "-100%" : "100%",
+    opacity: 0.9,
   }),
 };
 
 export default function Hero({ slides = HERO_SLIDES }) {
-  const sectionRef = useRef(null);
   const [[page, direction], setPage] = useState([0, 0]);
 
-  const currentSlideIndex = ((page % slides.length) + slides.length) % slides.length;
-  const activeSlide = slides[currentSlideIndex] || slides[0];
+  const currentSlideIndex =
+    ((page % slides.length) + slides.length) % slides.length;
 
-  const paginate = useCallback(
-    (newDirection) => {
-      setPage(([prevPage]) => [prevPage + newDirection, newDirection]);
-    },
-    []
-  );
+  const activeSlide = slides[currentSlideIndex];
+
+  const paginate = useCallback((newDirection) => {
+    setPage(([prevPage]) => [prevPage + newDirection, newDirection]);
+  }, []);
 
   const goToSlide = (index) => {
     const diff = index - currentSlideIndex;
+
     if (diff !== 0) {
       setPage(([prevPage]) => [prevPage + diff, diff > 0 ? 1 : -1]);
     }
   };
 
-  // Preload all banner images for instant crisp display
+  // Preload 4K banners for maximum clarity & zero transition flicker
   useEffect(() => {
     slides.forEach((slide) => {
-      const img = new Image();
-      img.src = slide.image;
+      const imgMobile = new Image();
+      imgMobile.src = slide.imageMobile;
+      const imgDesktop = new Image();
+      imgDesktop.src = slide.imageDesktop;
     });
   }, [slides]);
 
-  // Auto-advance slideshow every 5 seconds
+  // Auto slideshow - 5 seconds
   useEffect(() => {
-    if (!slides || slides.length === 0) return;
+    if (!slides.length) return;
+
     const timer = setInterval(() => {
       paginate(1);
     }, 5000);
-    return () => clearInterval(timer);
-  }, [slides, paginate]);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const opacityFade = useTransform(scrollYProgress, [0, 0.6, 1], [1, 0.9, 0.4]);
+    return () => clearInterval(timer);
+  }, [paginate, slides.length]);
 
   return (
     <section
       id="hero"
-      ref={sectionRef}
-      className="relative pt-20 sm:pt-24 md:pt-28 pb-4 sm:pb-6 px-4 sm:px-6 md:px-8 max-w-[1500px] mx-auto bg-white overflow-hidden"
-      data-testid="hero-section"
+      className="relative pt-16 md:pt-20 w-full overflow-hidden bg-white"
     >
-      {/* Screen reader heading for accessibility & SEO */}
+      {/* SEO heading */}
       <h1 className="sr-only">
         Zenmed Distributing Trust - Right Medicine. Right Place. Right Time.
       </h1>
 
-      {/* Hero Container - 16:9 aspect ratio matching 3840x2160 banner files to ensure zero top/bottom cropping */}
-      <div className="relative overflow-hidden rounded-[16px] sm:rounded-[24px] md:rounded-[32px] border border-slate-200/90 shadow-[0_12px_36px_-12px_rgba(15,23,42,0.15)] bg-slate-50 aspect-[16/9] w-full flex items-center justify-center touch-pan-y mx-auto">
-        
-        {/* Horizontal Banner Image Track with Mobile Touch Drag/Swipe */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <AnimatePresence initial={false} custom={direction} mode="popLayout">
-            <motion.div
-              key={page}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "tween", ease: [0.22, 1, 0.36, 1], duration: 0.8 },
-              }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.15}
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = Math.abs(offset.x) * velocity.x;
-                if (offset.x < -30 || swipe < -300) {
-                  paginate(1);
-                } else if (offset.x > 30 || swipe > 300) {
-                  paginate(-1);
-                }
-              }}
-              className="absolute inset-0 w-full h-full transform-gpu cursor-grab active:cursor-grabbing"
-            >
-              {/* Ultra-HD Banner Image - object-cover inside 16:9 container renders 100% full logo and text */}
+      {/* 100% FULL-WIDTH EDGE-TO-EDGE CONTAINER WITH ULTRA-SMOOTH SPRING SLIDE */}
+      <div className="relative w-full overflow-hidden bg-white select-none rounded-none">
+        <AnimatePresence initial={false} custom={direction} mode="popLayout">
+          <motion.div
+            key={page}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: {
+                type: "spring",
+                stiffness: 260,
+                damping: 32,
+                mass: 0.8,
+              },
+              opacity: {
+                duration: 0.35,
+                ease: "easeInOut",
+              },
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.1}
+            onDragEnd={(event, info) => {
+              const { offset, velocity } = info;
+              const swipe = Math.abs(offset.x) * velocity.x;
+
+              if (offset.x < -50 || swipe < -500) {
+                paginate(1);
+              }
+              if (offset.x > 50 || swipe > 500) {
+                paginate(-1);
+              }
+            }}
+            className="w-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y bg-white rounded-none will-change-transform"
+          >
+            <picture className="w-full h-auto block bg-white rounded-none">
+              <source media="(min-width: 768px)" srcSet={activeSlide.imageDesktop} />
               <img
-                src={activeSlide.image}
+                src={activeSlide.imageMobile}
                 alt={activeSlide.alt}
-                className="w-full h-full object-cover object-center block transform-gpu select-none pointer-events-none"
+                draggable="false"
+                loading="eager"
+                decoding="async"
+                fetchPriority={currentSlideIndex === 0 ? "high" : "auto"}
+                className="
+                  block
+                  w-full
+                  h-auto
+                  object-cover
+                  object-center
+                  pointer-events-none
+                  select-none
+                  bg-white
+                  transform-gpu
+                  rounded-none
+                "
                 style={{
                   imageRendering: "-webkit-optimize-contrast",
                   WebkitBackfaceVisibility: "hidden",
                   backfaceVisibility: "hidden",
+                  transform: "translateZ(0)",
+                  filter: "contrast(1.02) brightness(1.01) saturate(1.02)",
                 }}
-                loading="eager"
-                decoding="async"
               />
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            </picture>
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Left Navigation Button - Hidden on mobile to keep banner 100% clear, visible on sm+ */}
-        <button
-          type="button"
-          onClick={() => paginate(-1)}
-          aria-label="Previous Slide"
-          data-testid="hero-prev-btn"
-          className="hidden sm:flex absolute left-3 md:left-6 lg:left-8 z-30 top-1/2 -translate-y-1/2 h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full border border-slate-300/80 bg-white/90 shadow-md backdrop-blur-md items-center justify-center text-slate-800 hover:text-blue-600 hover:scale-110 active:scale-95 transition-all duration-200"
-        >
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
-
-        {/* Right Navigation Button - Hidden on mobile to keep banner 100% clear, visible on sm+ */}
-        <button
-          type="button"
-          onClick={() => paginate(1)}
-          aria-label="Next Slide"
-          data-testid="hero-next-btn"
-          className="hidden sm:flex absolute right-3 md:right-6 lg:right-8 z-30 top-1/2 -translate-y-1/2 h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full border border-slate-300/80 bg-white/90 shadow-md backdrop-blur-md items-center justify-center text-slate-800 hover:text-blue-600 hover:scale-110 active:scale-95 transition-all duration-200"
-        >
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
-
-        {/* Slide Indicator Dots */}
-        <div className="absolute bottom-2 sm:bottom-4 md:bottom-6 z-30 left-1/2 -translate-x-1/2 flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-900/40 backdrop-blur-md">
-          {slides.map((_, index) => (
+        {/* BOTTOM CENTER DOTS */}
+        <div className="absolute bottom-3 md:bottom-5 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/30 backdrop-blur-md">
+          {slides.map((slide, index) => (
             <button
-              key={index}
+              key={slide.id}
               type="button"
               onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
-              className={`h-1.5 sm:h-2.5 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentSlideIndex
-                  ? "w-5 sm:w-8 bg-white"
-                  : "w-1.5 sm:w-2.5 bg-white/50 hover:bg-white/80"
+                  ? "w-8 bg-white"
+                  : "w-2 bg-white/50 hover:bg-white/80"
               }`}
             />
           ))}
         </div>
-      </div>
 
-      {/* SCROLL DOWN Button Placed Below Banners */}
-      <div className="mt-4 sm:mt-6 md:mt-8 flex justify-center">
-        <Magnetic strength={0.18}>
-          <a
-            href="#about"
-            data-testid="hero-scroll-down"
-            className="group flex flex-col items-center gap-1.5 sm:gap-2 text-[0.65rem] sm:text-[0.75rem] font-bold tracking-[0.2em] sm:tracking-[0.25em] uppercase text-slate-700 hover:text-blue-600 transition-colors"
-          >
-            <span>SCROLL DOWN</span>
-            <span className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-slate-300 bg-white shadow-md transition-transform duration-300 group-hover:translate-y-1">
-              <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-800" />
-            </span>
-          </a>
-        </Magnetic>
+        {/* OVERLAY FLOATING LEFT BUTTON */}
+        <button
+          type="button"
+          onClick={() => paginate(-1)}
+          aria-label="Previous slide"
+          className="
+            absolute
+            left-3
+            md:left-6
+            top-1/2
+            -translate-y-1/2
+            z-30
+
+            flex
+            items-center
+            justify-center
+
+            w-10
+            h-10
+            md:w-12
+            md:h-12
+
+            rounded-full
+            bg-white/90
+            backdrop-blur-sm
+            border
+            border-slate-200
+            shadow-lg
+
+            text-slate-700
+            transition-all
+            duration-200
+
+            hover:bg-white
+            hover:text-blue-600
+            hover:scale-110
+
+            active:scale-95
+          "
+        >
+          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
+
+        {/* OVERLAY FLOATING RIGHT BUTTON */}
+        <button
+          type="button"
+          onClick={() => paginate(1)}
+          aria-label="Next slide"
+          className="
+            absolute
+            right-3
+            md:right-6
+            top-1/2
+            -translate-y-1/2
+            z-30
+
+            flex
+            items-center
+            justify-center
+
+            w-10
+            h-10
+            md:w-12
+            md:h-12
+
+            rounded-full
+            bg-white/90
+            backdrop-blur-sm
+            border
+            border-slate-200
+            shadow-lg
+
+            text-slate-700
+            transition-all
+            duration-200
+
+            hover:bg-white
+            hover:text-blue-600
+            hover:scale-110
+
+            active:scale-95
+          "
+        >
+          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
       </div>
     </section>
   );
