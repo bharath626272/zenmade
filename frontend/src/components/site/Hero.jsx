@@ -133,7 +133,8 @@ export default function Hero({ slides = HERO_SLIDES }) {
                 paginate(-1);
               }
             }}
-            className="w-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y bg-white rounded-none will-change-transform"
+            style={{ transform: "translateZ(0)", backfaceVisibility: "hidden" }}
+            className="w-full flex items-center justify-center cursor-grab active:cursor-grabbing touch-pan-y bg-white rounded-none will-change-transform transform-gpu"
           >
             <picture className="w-full h-auto block bg-white rounded-none">
               <source media="(min-width: 768px)" srcSet={activeSlide.imageDesktop} />
