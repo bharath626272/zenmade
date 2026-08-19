@@ -2,10 +2,6 @@ import React, { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import banner1Mobile from "@/assets/images/hero-banner-1.png";
-import banner2Mobile from "@/assets/images/hero-banner-2.png";
-import banner3Mobile from "@/assets/images/hero-banner-3.png";
-
 import banner1Desktop from "@/assets/images/hero-banner-desktop-1.png";
 import banner2Desktop from "@/assets/images/hero-banner-desktop-2.png";
 import banner3Desktop from "@/assets/images/hero-banner-desktop-3.png";
@@ -13,19 +9,19 @@ import banner3Desktop from "@/assets/images/hero-banner-desktop-3.png";
 export const HERO_SLIDES = [
   {
     id: 1,
-    imageMobile: banner1Mobile,
+    imageMobile: banner1Desktop,
     imageDesktop: banner1Desktop,
     alt: "Zenmed - Trusted Pharma Distribution Partner",
   },
   {
     id: 2,
-    imageMobile: banner2Mobile,
+    imageMobile: banner2Desktop,
     imageDesktop: banner2Desktop,
     alt: "Zenmed - Your Growth is Our Priority",
   },
   {
     id: 3,
-    imageMobile: banner3Mobile,
+    imageMobile: banner3Desktop,
     imageDesktop: banner3Desktop,
     alt: "Zenmed - Right Medicine. Right Place. Right Time.",
   },
