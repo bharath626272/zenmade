@@ -68,7 +68,9 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="#login"
+            href="http://117.254.110.187/ZENMED"
+            target="_blank"
+            rel="noopener noreferrer"
             data-testid="nav-login"
             className="btn-outline-pill text-sm px-4 py-2 flex items-center gap-2"
           >
@@ -111,7 +113,9 @@ export default function Navbar() {
             ))}
             <div className="mt-3 flex flex-col gap-2">
               <a
-                href="#login"
+                href="http://117.254.110.187/ZENMED"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className="btn-outline-pill text-sm justify-center py-2 flex items-center gap-2"
                 data-testid="nav-mobile-login"
